@@ -38,6 +38,7 @@ class App < Sinatra::Base
     body = request.body.read
     db["content_type:#{path}"] = content_type
     db["body:#{path}"] = body
+    db.flush
     ''
   end
 end
