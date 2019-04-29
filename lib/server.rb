@@ -36,9 +36,11 @@ class App < Sinatra::Base
     path = params[:splat].first
     content_type = request.env['CONTENT_TYPE']
     body = request.body.read
-    db["content_type:#{path}"] = content_type
-    db["body:#{path}"] = body
-    db.flush
+    db.synchronize do
+      db["content_type:#{path}"] = content_type
+      db["body:#{path}"] = body
+      db.flush
+    end
     ''
   end
 end
