@@ -1,10 +1,10 @@
 require 'daybreak'
-require 'byebug'
+autoload :Byebug, 'byebug'
 require 'sinatra'
-require 'sinatra/reloader'
 
 class App < Sinatra::Base
   configure :development do
+    require 'sinatra/reloader'
     register Sinatra::Reloader
   end
 

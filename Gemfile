@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'byebug'
 gem 'daybreak'
+gem 'sinatra'
+group :development do
+  gem 'sinatra-contrib'
+end
+group :test do
+  gem 'byebug'
+end
+group :production do
+  gem 'puma'
+end
